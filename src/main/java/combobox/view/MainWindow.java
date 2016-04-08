@@ -41,6 +41,8 @@ public class MainWindow extends JFrame {
 //        comboBox.setRenderer();
 
         JTextField textField = new JTextField(15);
+        JLabel idCat = new JLabel("Id: ");
+        JLabel nameCat = new JLabel("Name: ");
 
 
         JButton btnAdd = new JButton("Добавить категорию");
@@ -57,9 +59,21 @@ public class MainWindow extends JFrame {
             }
         });
 
+        comboBox.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                Category category = (Category)((JComboBox)e.getSource()).getSelectedItem();
+                idCat.setText("" + category.getId());
+                nameCat.setText(category.getName());
+            }
+        });
+
+
         panel.add(comboBox);
         panel.add(textField);
         panel.add(btnAdd);
+        panel.add(idCat);
+        panel.add(nameCat);
 
         getContentPane().add(panel);
 
